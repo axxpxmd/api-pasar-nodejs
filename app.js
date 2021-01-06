@@ -7,7 +7,7 @@ const express = require('express'); // express sebagai framework dari node js
 
 const app = express();
 const { port } = require('./config');
-const { jenisLapakRoute, jenisUsahaRoute, pedagangRoute } = require('./routes');
+const { jenisLapakRoute, jenisUsahaRoute, pedagangRoute, pedagangAlamatRoute } = require('./routes');
 
 app.use(express.json());
 
@@ -16,6 +16,6 @@ app.get('/', (req,res) => {
 });
 
 app.use('/master-jenis', [jenisUsahaRoute, jenisLapakRoute]);
-app.use('/master-pedagang', pedagangRoute);
+app.use('/master-pedagang', [pedagangRoute, pedagangAlamatRoute]);
 
 app.listen(port, () => console.log('Node is running, API active at port: ' + port));
