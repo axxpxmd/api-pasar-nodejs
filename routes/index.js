@@ -1,8 +1,9 @@
-const jenisLapakRouter = require('./jenisLapakRouter');
-const jenisUsahaRouter = require('./jenisUsahaRouter');
+const jenisLapakRoute = require('./jenisLapakRoute');
+const jenisUsahaRoute = require('./jenisUsahaRoute');
+const pedagangRoute = require('./pedagangRoute');
 
 module.exports = {
-    jenisLapakRouter, 
-    jenisUsahaRouter
-
+    jenisLapakRoute, 
+    jenisUsahaRoute,
+    pedagangRoute
 }
