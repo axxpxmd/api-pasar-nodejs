@@ -7,7 +7,7 @@ const express = require('express'); // express sebagai framework dari node js
 
 const app = express();
 const { port } = require('./config');
-const { jenisLapakRouter, jenisUsahaRouter } = require('./routes')
+const { jenisLapakRouter, jenisUsahaRouter } = require('./routes');
 
 app.use(express.json());
 
