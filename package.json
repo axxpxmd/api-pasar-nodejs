@@ -1,0 +1,27 @@
+{
+  "name": "api-pasar",
+  "version": "1.0.0",
+  "description": "api for application pasar",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axxpxmd/api-pasar-nodejs.git"
+  },
+  "author": "axxpxmd",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/axxpxmd/api-pasar-nodejs/issues"
+  },
+  "homepage": "https://github.com/axxpxmd/api-pasar-nodejs#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
