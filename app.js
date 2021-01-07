@@ -11,7 +11,8 @@ const {
     jenisLapakRoute,
     jenisUsahaRoute,
     pedagangRoute,
-    pedagangAlamatRoute
+    pedagangAlamatRoute, 
+    pasarRoute
 } = require('./routes');
 
 app.use(express.json());
@@ -22,5 +23,6 @@ app.get('/', (req, res) => {
 
 app.use('/master-jenis', [jenisUsahaRoute, jenisLapakRoute]);
 app.use('/master-pedagang', [pedagangRoute, pedagangAlamatRoute]);
+app.use('/master-pasar', pasarRoute);
 
 app.listen(port, () => console.log('Node is running, API active at port: ' + port));
