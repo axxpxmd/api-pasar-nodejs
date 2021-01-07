@@ -7,11 +7,16 @@ const express = require('express'); // express sebagai framework dari node js
 
 const app = express();
 const { port } = require('./config');
-const { jenisLapakRoute, jenisUsahaRoute, pedagangRoute, pedagangAlamatRoute } = require('./routes');
+const {
+    jenisLapakRoute,
+    jenisUsahaRoute,
+    pedagangRoute,
+    pedagangAlamatRoute
+} = require('./routes');
 
 app.use(express.json());
 
-app.get('/', (req,res) => {
+app.get('/', (req, res) => {
     res.send('Selamat Datang di API Pasar, dibuat menggunakan nodejs dan database MySQL.');
 });
 
