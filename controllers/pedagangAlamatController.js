@@ -31,7 +31,7 @@ module.exports = {
             }
         })
     },
-    
+
     filterByJenisUsaha: (req, res) => {
         var sql = `SELECT * FROM tm_pedagang_alamats WHERE tm_jenis_usaha_id = '${req.params.jenisUsaha}' ORDER BY nm_toko ASC`
         conn.query(sql, (err, result) => {
@@ -43,5 +43,16 @@ module.exports = {
         })
     },
 
-    /** Search */
+    /** Search by nm_toko, kd_toko */
+    search: (req, res) => {
+        var search = req.body;
+        var sql = `SELECT * FROM tm_pedagang_alamats WHERE nm_toko LIKE '%${req.body.nm_toko}%' && kd_toko LIKE '%${req.body.kd_toko}%' ORDER BY nm_toko ASC`
+        conn.query(sql, search, (err, result) => {
+            if (result == false) {
+                res.send('Data tidak ditemukan!')
+            } else {
+                res.send(result)
+            }
+        })
+    }
 }
