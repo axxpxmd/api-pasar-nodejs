@@ -1,3 +1,8 @@
+/**
+ * Disini tidak mengimport body-parser karna untuk express js
+ * versi 4.16.0 body-parser sudah include kedalamnya
+ */
+
 const express = require('express'); // express sebagai framework dari node js
 
 const app = express();
