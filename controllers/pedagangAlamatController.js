@@ -2,6 +2,11 @@ const conn = require('../database');
 const { check, validationResult } = require('express-validator');
 
 module.exports = {
+    validation: [
+        check('pedagang').isNumeric().withMessage('data harus numerik!'),
+        check('jenisUsaha').isNumeric().withMessage('data harus numerik!')
+    ],
+
     index: (req, res) => {
         var sql = 'SELECT * FROM tm_pedagang_alamats ORDER BY nm_toko ASC'
         conn.query(sql, (err, results) => {
@@ -22,11 +27,6 @@ module.exports = {
     },
 
     /** Filter */
-    validation: [
-        check('pedagang').isNumeric().withMessage('data harus numerik!').isEmpty().withMessage('data tidak boleh kosong!'),
-        check('jenisUsaha').isNumeric().withMessage('data harus numerik!')
-    ],
-
     filter: (req, res) => {
         var sql = `SELECT * FROM tm_pedagang_alamats WHERE tm_pedagang_id = '${req.params.pedagang}' AND tm_jenis_usaha_id = '${req.params.jenisUsaha}' ORDER BY nm_toko`
         const errors = validationResult(req)
@@ -41,7 +41,7 @@ module.exports = {
             }
         })
     },
-    
+
     filterByPedagang: (req, res) => {
         var sql = `SELECT * FROM tm_pedagang_alamats WHERE tm_pedagang_id = '${req.params.pedagang} ORDER BY nm_toko ASC'`
         conn.query(sql, (err, result) => {
