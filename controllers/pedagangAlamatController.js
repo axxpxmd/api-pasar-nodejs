@@ -22,6 +22,26 @@ module.exports = {
     },
 
     /** Filter */
+    validation: [
+        check('pedagang').isNumeric().withMessage('data harus numerik!').isEmpty().withMessage('data tidak boleh kosong!'),
+        check('jenisUsaha').isNumeric().withMessage('data harus numerik!')
+    ],
+
+    filter: (req, res) => {
+        var sql = `SELECT * FROM tm_pedagang_alamats WHERE tm_pedagang_id = '${req.params.pedagang}' AND tm_jenis_usaha_id = '${req.params.jenisUsaha}' ORDER BY nm_toko`
+        const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            return res.status(422).json({ errors: errors.array() })
+        }
+        conn.query(sql, (err, result) => {
+            if (result == false) {
+                res.send('Data tidak ditemukan!')
+            } else {
+                res.send(result)
+            }
+        })
+    },
+    
     filterByPedagang: (req, res) => {
         var sql = `SELECT * FROM tm_pedagang_alamats WHERE tm_pedagang_id = '${req.params.pedagang} ORDER BY nm_toko ASC'`
         conn.query(sql, (err, result) => {
@@ -35,26 +55,6 @@ module.exports = {
 
     filterByJenisUsaha:(req, res) => {
         var sql = `SELECT * FROM tm_pedagang_alamats WHERE tm_jenis_usaha_id = '${req.params.jenisUsaha}' ORDER BY nm_toko ASC`
-        conn.query(sql, (err, result) => {
-            if (result == false) {
-                res.send('Data tidak ditemukan!')
-            } else {
-                res.send(result)
-            }
-        })
-    },
-
-    validation: [
-        check('pedagang').isNumeric().withMessage('data harus numerik!').isEmpty().withMessage('data tidak boleh kosong!'),
-        check('jenisUsaha').isNumeric().withMessage('data harus numerik!')
-    ],
-
-    filter: (req, res) => {
-        var sql = `SELECT * FROM tm_pedagang_alamats WHERE tm_pedagang_id = '${req.params.pedagang}' AND tm_jenis_usaha_id = '${req.params.jenisUsaha}' ORDER BY nm_toko`
-        const errors = validationResult(req)
-        if (!errors.isEmpty()) {
-            return res.status(422).json({ errors: errors.array() })
-        }
         conn.query(sql, (err, result) => {
             if (result == false) {
                 res.send('Data tidak ditemukan!')
