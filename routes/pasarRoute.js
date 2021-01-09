@@ -6,5 +6,6 @@ var url = '/pasar';
 
 router.get(url, pasarController.index);
 router.get(url + '/:id', pasarController.show);
+router.post(url + '/search', pasarController.searchByName);
 
 module.exports = router;

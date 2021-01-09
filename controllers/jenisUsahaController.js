@@ -18,5 +18,19 @@ module.exports = {
                 res.send(result)
             }  
         })
+    },
+
+    /**
+     * Search
+     */
+    searchByName: (req, res) => {
+        var sql = `SELECT * FROM tm_jenis_usaha WHERE id = '${req.params.id}' ORDER BY nm_kategori ASC`
+        conn.query(sql, (err, result) => {
+            if (result == false) {
+                res.send('Data tidak ditemukan!')
+            } else {
+                res.send(result)
+            }
+        })
     }
 }
